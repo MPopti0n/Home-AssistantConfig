@@ -151,7 +151,7 @@ You can change the icon as you want by picking any icon on [Material Design Icon
 
 ## 4. Creating a group to show it as a card
 
-If you've already have a ```groups.yalm``` go to 4.2
+If you already have or have created a ```groups.yalm``` file in HA go to 4.2
 
 ### 4.1 Create and link ```groups.yalm```
 
