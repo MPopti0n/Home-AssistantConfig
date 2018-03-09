@@ -64,10 +64,10 @@ Every sensor is composed of 2 blocs of code
   # don't change that line
   
   resource: https://api.seneye.com/v1/devices/YOUR_DEVICE_ID/exps?user=YOUR_SENEYE_USERNAME&pwd=YOUR_SENEYE_PASSWORD
-  # you need to modify this URL wih your own Devide ID, Seneye username & password
+  # you need to modify this URL with your own Devide ID, Seneye username & password
   
   value_template: '{{ value_json.temperature["curr"] }}'
-  # don't change that line, this is where HA fetch the raw value
+  # don't change that line, this is where HA fetch the raw value in the Seneye API response
   
   name: "AquariumTemp_raw"
   # this is you personal name for the RAW sensor... but you should hide that one because it's the raw value
