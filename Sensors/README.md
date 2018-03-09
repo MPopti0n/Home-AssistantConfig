@@ -1,6 +1,6 @@
 # SENEYE sensor
 
-Seneye is an aquarium water multi-sensor that decline in 3 versions (at the moment of writing this!).
+[Seneye](https://www.seneye.com/) is an aquarium water multi-sensor that decline in 3 versions (at the moment of writing this!).
 The readings can include (depending on the model):
 
 - Temperature
