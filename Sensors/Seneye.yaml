@@ -1,0 +1,84 @@
+# Temparature
+
+- platform: rest
+  resource: https://api.seneye.com/v1/devices/YOUR_DEVICE_ID/exps?user=YOUR_SENEYE_USERNAME&pwd=YOUR_SENEYE_PASSWORD
+  value_template: '{{ value_json.temperature["curr"] }}'
+  name: "AquariumTemp_raw"
+  method: GET
+  unit_of_measurement: "°C"
+
+- platform: template
+  sensors:
+    aquarium_t:
+      friendly_name: "Temperature"
+      unit_of_measurement: '°C'
+      value_template: '{{ (states.sensor.aquariumtemp_raw.state | float) }}'
+      icon_template: '{%- if states.sensor.aquariumtemp_raw.state|int <= 22 -%}mdi:arrow-down-bold-circle{%- elif states.sensor.aquariumtemp_raw.state|int <= 24 -%}mdi:arrow-down-bold-circle-outline{%- elif states.sensor.aquariumtemp_raw.state|int < 26 -%}mdi:thumb-up-outline{%- elif states.sensor.aquariumtemp_raw.state|int >= 28 -%}mdi:arrow-up-bold-circle{%- elif states.sensor.aquariumtemp_raw.state|int >= 26 -%}mdi:arrow-up-bold-circle-outline{% else %}mdi:sync-alert{% endif %}'
+
+# pH
+
+- platform: rest
+  resource: https://api.seneye.com/v1/devices/YOUR_DEVICE_ID/exps?user=YOUR_SENEYE_USERNAME&pwd=YOUR_SENEYE_PASSWORD
+  value_template: '{{ value_json.ph["curr"] }}'
+  name: "AquariumPH_raw"
+  method: GET
+  unit_of_measurement: ""
+  
+- platform: template
+  sensors:
+    aquarium_ph:
+      friendly_name: "pH"
+      unit_of_measurement: ''
+      value_template: '{{ (states.sensor.aquariumph_raw.state | float) }}'
+      icon_template: '{%- if states.sensor.aquariumph_raw.state | float <= 6.0 -%}mdi:arrow-down-bold-circle{%- elif states.sensor.aquariumph_raw.state | float <= 6.5 -%}mdi:arrow-down-bold-circle-outline{%- elif states.sensor.aquariumph_raw.state | float < 7.5 -%}mdi:thumb-up-outline{%- elif states.sensor.aquariumph_raw.state | float >= 7.8 -%}mdi:arrow-up-bold-circle{%- elif states.sensor.aquariumph_raw.state | float >= 7.5 -%}mdi:arrow-up-bold-circle-outline{% else %}mdi:sync-alert{% endif %}'
+
+# NH4
+
+- platform: rest
+  name: "AquariumNH4_raw"
+  resource: https://api.seneye.com/v1/devices/YOUR_DEVICE_ID/exps?user=YOUR_SENEYE_USERNAME&pwd=YOUR_SENEYE_PASSWORD
+  method: GET
+  value_template: '{{ value_json.nh4["curr"] }}'
+  unit_of_measurement: "ppb"
+  
+- platform: template
+  sensors:
+    aquarium_nh4:
+      friendly_name: "NH4"
+      unit_of_measurement: 'ppb'
+      value_template: '{{ (states.sensor.aquariumnh4_raw.state | float | round ) }}'
+      icon_template: '{%- if states.sensor.aquariumnh4_raw.state|int < 600 -%}mdi:thumb-up-outline{%- elif states.sensor.aquariumnh4_raw.state|int >= 600 -%}mdi:arrow-up-bold-circle-outline{% else %}mdi:sync-alert{% endif %}'
+
+# NH3 (Ammonia)
+
+- platform: rest
+  name: "AquariumNH3_raw"
+  resource: https://api.seneye.com/v1/devices/YOUR_DEVICE_ID/exps?user=YOUR_SENEYE_USERNAME&pwd=YOUR_SENEYE_PASSWORD
+  method: GET
+  value_template: '{{ value_json.nh3["curr"] }}'
+  unit_of_measurement: "ppm"
+  
+- platform: template
+  sensors:
+    aquarium_ammonia:
+      friendly_name: "Ammonia (NH3)"
+      unit_of_measurement: 'ppm'
+      value_template: '{{ (states.sensor.aquariumnh3_raw.state | float) }}'
+      icon_template: '{%- if states.sensor.aquariumnh3_raw.state | float <= 0.02 -%}mdi:thumb-up-outline{%- elif states.sensor.aquariumnh3_raw.state | float <= 0.025 -%}mdi:arrow-up-bold-circle-outline{%- elif states.sensor.aquariumnh3_raw.state | float > 0.025 -%}mdi:arrow-up-bold-circle{% else %}mdi:sync-alert{% endif %}'
+
+# Dissolved oxygen potential
+
+- platform: rest
+  name: "Aquariumo2_raw"
+  resource: https://api.seneye.com/v1/devices/YOUR_DEVICE_ID/exps?user=YOUR_SENEYE_USERNAME&pwd=YOUR_SENEYE_PASSWORD
+  method: GET
+  value_template: '{{ value_json.o2["curr"] }}'
+  unit_of_measurement: "ppm"
+ 
+- platform: template
+  sensors:
+    aquarium_o2:
+      friendly_name: "Dissolved o2 potential"
+      unit_of_measurement: 'ppm'
+      value_template: '{{ (states.sensor.aquariumo2_raw.state ) }}'
+      icon_template: '{%- if states.sensor.aquariumo2_raw.state |int >= 1 -%}mdi:waves{% else %}mdi:sync-alert{% endif %}'
