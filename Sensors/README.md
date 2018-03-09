@@ -38,7 +38,7 @@ You should get something like this :
 </response>
 ```
 
-## 2. Create and link sensors.yalm
+## 2. Create and link ```sensors.yalm```
 
 1. Copy and past this in your configuration.yalm ```sensor: !include sensors.yalm```
 
@@ -153,7 +153,7 @@ You can change the icon as you want by picking any icon on [Material Design Icon
 
 If you've already have a ```groups.yalm``` go to 4.2
 
-### 4.1 Create and link groupss.yalm
+### 4.1 Create and link ```groups.yalm```
 
 1. Copy and past this in your configuration.yalm ```group: !include groups.yalm```
 
