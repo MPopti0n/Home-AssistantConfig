@@ -12,14 +12,14 @@ The readings can include (depending on the model):
 - Day/Night cycle
 - In/Out water
 
-Documentation on the Seneye api can be found here : https://api.seneye.com/
+Documentation on the Seneye api can be found here : [Seneye API documentation](https://api.seneye.com/)
 
 
 ### 1. Get your device ID
 
 Type this in your browser : https://api.seneye.com/v1/devices?user=***&pwd=***
 
-*Replace the "* * *" by the username and password you are using to login at https://www.seneye.me/*
+*Replace the "* * *" by the username and password you are using to login at [Seneye.me](https://www.seneye.me/)*
 
 You should get something like this :
 ```
@@ -33,13 +33,17 @@ You should get something like this :
 </response>
 ```
 
-### 2. Create the sensors
+### 2. Create and link sensors.yalm
 
-Copy and past the code from :
-- Seneye.yalm
-  - Basic
+1. Copy and past this in your configuration.yalm ```sensor: !include sensors.yalm```
 
-OR
+   *This is call splitting configuration, more info : [Home Assistant - Splitting configuration](https://home-assistant.io/docs/configuration/splitting_configuration/)
+   
+2. Create a sensors.yalm file in the same folder as your configuration.yalm (generaly in the /config folder)
 
-- SeneyeWithTemplate
-  - Basic + Icons changing on min/max/critical values
+   *This will be the file where you will write the code for all the ```sensor:```*
+
+
+### 3. Create the sensors
+
+Copy and past the code from my seneye.yalm in the sensors.yalm file you've just created
